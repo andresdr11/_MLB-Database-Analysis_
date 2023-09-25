@@ -7,5 +7,5 @@ print(6)
 print("mifhuwhu")
 print("nscnwninvwr")
 print("knfekn")
-
+print('mndvknr')
 
