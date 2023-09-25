@@ -6,6 +6,6 @@ print(6)
 
 print("mifhuwhu")
 print("nscnwninvwr")
-Print("knfekn")
+print("knfekn")
 
 
