@@ -233,4 +233,3 @@ FROM salary
 WHERE year = 2015
 GROUP BY team_id
 ORDER BY avg_salary DESC;
-
