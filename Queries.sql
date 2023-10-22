@@ -218,6 +218,7 @@ ORDER BY 4;
 
 
 --18. Average salaries by team and which of them have the best and worst compensation in comparison to the league`s average salary using percentiles
+--En este todavia falta crear la tabla de peracentiles??????
 SELECT
     team_id,
     ROUND(AVG(salary)) as avg_salary,
