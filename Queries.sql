@@ -161,11 +161,13 @@ FROM team
 GROUP BY 1
 ORDER BY 1 DESC;
 
--- We can also see a trend here in which each decade there are more homeruns per game except por the 2010 ´ s, but still the upward 
--- trend is pretty clear.As pitchers have become more focused on strikeouts, they may be more likely to throw pitches with higher velocity 
--- and spin rate, which can lead to more home run opportunities for batters. Also some stadiums have been modified to be
---"homerun friendly".Changes in bat design and materials have led to bats that can generate more power when the ball is struck.
--- these may be some of the reasons we find these two interesting trends.
+/*
+We can also see a trend here in which each decade there are more homeruns per game except por the 2010 ´ s, but still the upward 
+trend is pretty clear.As pitchers have become more focused on strikeouts, they may be more likely to throw pitches with higher velocity 
+and spin rate, which can lead to more home run opportunities for batters. Also some stadiums have been modified to be
+"homerun friendly".Changes in bat design and materials have led to bats that can generate more power when the ball is struck.
+these may be some of the reasons we find these two interesting trends
+*/
 
 --15.Most wins in a season without winning the World Series.
 
