@@ -9,7 +9,6 @@ ORDER BY 2 DESC;
 
 --2. Join de batting con player para tener los nombres completos de los jugadores.
 -- Most HomeRuns by Boston Red Sox players ever
-
 SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) full_name, SUM(hr)
 FROM batting_2 b
 JOIN player p
