@@ -21,6 +21,7 @@ ORDER BY 3 DESC
 LIMIT 20;
 
 
+
 --3. Players ranked by hr, in case of players having the same number of home runs the rank will take number of hits into consideration.
 SELECT RANK() OVER(ORDER BY hr DESC, h/ab DESC) Rank, name_first  first_name, name_last last_name, hr, ROUND((h/ab),3) as batting_avg
 FROM batting_2
@@ -127,20 +128,9 @@ ORDER BY 3 DESC
 LIMIT 25;
 
 
---10.Park Analysis
--- revisar si este join tiene sentido, terminar idea...
-SELECT *
-FROM park p
-JOIN team t
-    ON p.park_name = t.park
-
-
-
-
-
 
 -- Fielding position and salary analysis
---11. Best paid players and their fielding position
+--10. Best paid players and their fielding position
 SELECT f.player_id, p.name_first, p.name_last, MAX(salary), f.pos
 FROM salary s
 JOIN fielding f
@@ -153,7 +143,7 @@ LIMIT 50;
 
 
 
---12. Average salary per fielding position
+--11. Average salary per fielding position
 SELECT f.pos, ROUND(AVG(s.salary)) as avg_salary
 FROM salary s
 JOIN fielding f
@@ -163,7 +153,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 
 
---13. Pitchers that earn more than the average salary in the mlb for the year 2015
+--12. Pitchers that earn more than the average salary in the mlb for the year 2015
 SELECT p.name_first, p.name_last, s.salary
 FROM player p
 JOIN salary s ON p.player_id = s.player_id
@@ -178,7 +168,7 @@ ORDER BY s.salary DESC;
 
 
 
---14. Average strikeouts per game by decade
+--13. Average strikeouts per game by decade
 SELECT ((year / 10) * 10) as decade, ROUND(SUM(so) / SUM(g),2)as avg_so_per_game
 FROM team
 GROUP BY 1
@@ -188,7 +178,7 @@ ORDER BY 1 DESC;
 --in pitchers technique and ability. Pitchers nowadays are also throwing harder with more ball movement.
 
 
---15. Average homeruns per game by decade
+--14. Average homeruns per game by decade
 SELECT ((year / 10) * 10) as decade, ROUND(SUM(hr)/SUM(g),3) as avg_hr_per_game
 FROM team
 GROUP BY 1
@@ -202,7 +192,7 @@ ORDER BY 1 DESC
 
 
 
---16. Most wins in a season without winning the World Series.
+--15. Most wins in a season without winning the World Series.
 SELECT name, g as games, w as games_won, ROUND(CAST (w AS REAL)/g*100) as winning_percentage, ws_win as World_Series_Win, year
     FROM team
     WHERE ws_win = 'N' AND year >= 2000
@@ -211,7 +201,7 @@ ORDER BY 3 DESC
 LIMIT 5;
 
 
---17. Minimum wins in a season and winning the World Series since 21st century.
+--16. Minimum wins in a season and winning the World Series since 21st century.
 SELECT name, g ,w, CAST(w AS REAL) /g as ratio, ws_win as world_series_win, year
 FROM team
 WHERE ws_win = 'Y' AND year >= 2000
@@ -219,7 +209,7 @@ GROUP BY 1,2,3,5,6
 ORDER BY 4;
 
 
---18. Average salaries by team and which of them have the best and worst compensation in comparison to the league`s average salary using percentiles
+--17. Average salaries by team and which of them have the best and worst compensation in comparison to the league`s average salary using percentiles
 
 CREATE TEMP TABLE avg_salary_percentiles AS
 SELECT
