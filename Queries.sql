@@ -86,32 +86,16 @@ LIMIT 10;
 
 
 
---8. Teams with the highest yearly pay to their players in most recent data (2015) and highest earner.
-
-SELECT team_id, ROUND(AVG(salary)) as avg_salary, MAX (salary), p.full_name
+--8. Teams with the highest salary disparity
+-- Este lo cambié y me lancé esta idea de disparity que está bien tmbn algo con restas, pero bueno está esto mientras tanto
+SELECT team_id, ROUND(AVG(salary)) as avg_salary, MAX(salary) max_salary, MAX(salary) - ROUND(AVG(salary)) salary_disparity
 FROM salary s
-         JOIN player p
-              ON s.player_id = p.player_id
+    JOIN player p
+        ON s.player_id = p.player_id
 WHERE year = 2015
-GROUP BY 1, 4
-ORDER BY 2 DESC
+GROUP BY 1
+ORDER BY 3 DESC
 
-
-
---ARREGLAR ESTE, explicación abajo de lo que se quiere hacer
--- Quiero primero separar por team, después decir que paga cada team en average a sus jugadores, tercero sería el salario máximo
--- que paga cada uno de estos teams, y por ultima columna quién es el jugador que recibe este maximum pay.
--- Si quitas name_first y name_last el query tiene sentido entero y el avg_salary para cada team se calcula bien al igual que el max
--- salario que paga cada team. El tema es que este query no quiere calcular el avg salary bien, regresa el mismo resultado que la columna de max salary
-
-
-SELECT  MAX(salary), p.full_name
-FROM salary s
-JOIN player p
-ON s.player_id = p.player_id
-WHERE year = 2015
-GROUP BY 2
-ORDER BY 1 DESC
 
 
 
