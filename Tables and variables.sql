@@ -43,8 +43,12 @@ ALTER TABLE team
 ALTER COLUMN hr TYPE numeric USING hr::numeric;
 
 
---6. SELECT *
-INTO batting2
+--6. creación de tabla batting_2
+SELECT*
+INTO batting_2
 FROM batting
-WHERE hr IS NOT NULL;
+WHERE hr IS NOT NULL
+AND hr > 0
+  AND ab IS NOT NULL
+  AND ab > 0;
 

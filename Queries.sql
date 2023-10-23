@@ -1,6 +1,6 @@
 --1. Mejores bateadores de la historia por Homeruns
 SELECT player_id, SUM(hr)
-FROM batting
+FROM batting_2
 GROUP BY 1
 HAVING SUM(hr) IS NOT NULL
 ORDER BY 2 DESC;
@@ -11,7 +11,7 @@ ORDER BY 2 DESC;
 -- Most HomeRuns by Boston Red Sox players ever
 
 SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(hr)
-FROM batting b
+FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
 WHERE team_id = 'BOS'
@@ -22,16 +22,18 @@ LIMIT 20;
 
 
 --3. Players ranked by hr, in case of players having the same number of home runs the rank will take number of hits into consideration.
-SELECT DENSE_RANK() OVER(ORDER BY hr DESC, h DESC, rbi DESC) Rank, name_first  first_name, name_last last_name, hr, h
-FROM batting2
+SELECT RANK() OVER(ORDER BY hr DESC, h/ab DESC) Rank, name_first  first_name, name_last last_name, hr, ROUND((h/ab),3) as batting_avg
+FROM batting_2
 JOIN player p
-    ON batting2.player_id = p.player_id
+    ON batting_2.player_id = p.player_id
 WHERE year = 2015;
+
+
 
 
 --4. Best homeruns per at bat avg from the New York Yankees players since 2000´s
 SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(hr) as homeruns, SUM(ab) as at_bats, ROUND(SUM(hr) / SUM(ab),3) as Homeruns_per_at_bat_AVG
-FROM batting b
+FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
 WHERE team_id = 'NYA'
@@ -45,7 +47,7 @@ LIMIT 50;
 --5. New York Yankees players batting average and determing which ones are above the league´s average
 WITH league_avg AS (
     SELECT ROUND(SUM(h) / SUM(ab),3) as league_avg
-    FROM batting
+    FROM batting_2
     WHERE ab>=100
 )
     SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, ROUND(SUM(h) / SUM(ab),3) as batting_avg,
@@ -53,7 +55,7 @@ WITH league_avg AS (
            WHEN ROUND(SUM(h) / SUM(ab),3) > league_avg THEN 'Above avg'
            ELSE 'Below avg'
     END AS batting_performance
-    FROM league_avg, batting b
+    FROM league_avg, batting_2 b
     JOIN player p
     ON b.player_id = p.player_id
     WHERE ab>=100 and team_id = 'NYA'
@@ -113,7 +115,7 @@ ORDER BY 1 DESC
 
 --9. Top 10 players by hits and part of the Hall of Fame
 SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(h)
-FROM batting b
+FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
 JOIN hall_of_fame h
@@ -128,12 +130,12 @@ LIMIT 25;
 --10.Park Analysis
 -- revisar si este join tiene sentido, terminar idea...
 SELECT *
-FROM batting b
+FROM park p
 JOIN team t
-ON b.team_id = t.team_id
-JOIN park p
-ON p.park_name = t.park
-LIMIT 50;
+    ON p.park_name = t.park
+
+
+
 
 
 
