@@ -1,7 +1,8 @@
 --1. Mejores bateadores de la historia por Homeruns
 SELECT player_id, SUM(hr)
-FROM batting_2
+FROM batting
 GROUP BY 1
+HAVING SUM(hr) is not null
 ORDER BY 2 DESC;
 
 
@@ -9,7 +10,7 @@ ORDER BY 2 DESC;
 --2. Join de batting con player para tener los nombres completos de los jugadores.
 -- Most HomeRuns by Boston Red Sox players ever
 
-SELECT b.player_id, p.full_name, SUM(hr)
+SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) full_name, SUM(hr)
 FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id

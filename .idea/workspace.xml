@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5aed81d9-74f7-4fb4-96ca-c38d77f3257a" name="Changes" comment="Update">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Queries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Queries.sql" afterDir="false" />
     </list>
