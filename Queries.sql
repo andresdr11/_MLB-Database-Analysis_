@@ -218,7 +218,20 @@ ORDER BY 4;
 
 
 --18. Average salaries by team and which of them have the best and worst compensation in comparison to the league`s average salary using percentiles
---En este todavia falta crear la tabla de peracentiles??????
+
+CREATE TEMP TABLE avg_salary_percentiles AS
+SELECT
+            percentile_cont(0.1) WITHIN GROUP (ORDER BY avg_salary) as p10,
+            percentile_cont(0.25) WITHIN GROUP (ORDER BY avg_salary) as p25,
+            percentile_cont(0.75) WITHIN GROUP (ORDER BY avg_salary) as p75,
+            percentile_cont(0.9) WITHIN GROUP (ORDER BY avg_salary) as p90
+FROM (
+         SELECT avg(salary) as avg_salary
+         FROM salary
+         WHERE year = 2015
+         GROUP BY team_id
+     ) as avg_salaries;
+
 SELECT
     team_id,
     ROUND(AVG(salary)) as avg_salary,
