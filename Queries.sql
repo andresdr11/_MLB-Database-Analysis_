@@ -2,7 +2,6 @@
 SELECT player_id, SUM(hr)
 FROM batting_2
 GROUP BY 1
-HAVING SUM(hr) IS NOT NULL
 ORDER BY 2 DESC;
 
 
@@ -10,20 +9,19 @@ ORDER BY 2 DESC;
 --2. Join de batting con player para tener los nombres completos de los jugadores.
 -- Most HomeRuns by Boston Red Sox players ever
 
-SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(hr)
+SELECT b.player_id, p.full_name, SUM(hr)
 FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
 WHERE team_id = 'BOS'
 GROUP BY 1,2
-HAVING SUM(hr) IS NOT NULL
 ORDER BY 3 DESC
 LIMIT 20;
 
 
 
 --3. Players ranked by hr, in case of players having the same number of home runs the rank will take number of hits into consideration.
-SELECT RANK() OVER(ORDER BY hr DESC, h/ab DESC) Rank, name_first  first_name, name_last last_name, hr, ROUND((h/ab),3) as batting_avg
+SELECT RANK() OVER(ORDER BY hr DESC, h/ab DESC) Rank, p.full_name, hr, ROUND((h/ab),3) as batting_avg
 FROM batting_2
 JOIN player p
     ON batting_2.player_id = p.player_id
@@ -33,7 +31,7 @@ WHERE year = 2015;
 
 
 --4. Best homeruns per at bat avg from the New York Yankees players since 2000´s
-SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(hr) as homeruns, SUM(ab) as at_bats, ROUND(SUM(hr) / SUM(ab),3) as Homeruns_per_at_bat_AVG
+SELECT b.player_id, p.full_name, SUM(hr) as homeruns, SUM(ab) as at_bats, ROUND(SUM(hr) / SUM(ab),3) as Homeruns_per_at_bat_AVG
 FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
@@ -51,7 +49,7 @@ WITH league_avg AS (
     FROM batting_2
     WHERE ab>=100
 )
-    SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, ROUND(SUM(h) / SUM(ab),3) as batting_avg,
+    SELECT b.player_id, p.full_name, ROUND(SUM(h) / SUM(ab),3) as batting_avg,
            CASE
            WHEN ROUND(SUM(h) / SUM(ab),3) > league_avg THEN 'Above avg'
            ELSE 'Below avg'
@@ -76,7 +74,7 @@ ORDER BY 2 DESC;
 
 
 --7.Best Pitchers of all-time in terms of more "Pitching Triple Crown" player awards
-SELECT p.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name,  COUNT(pa.award_id)
+SELECT p.player_id, p.full_name,  COUNT(pa.award_id)
 FROM player p
 JOIN player_award pa
 ON p.player_id = pa.player_id
@@ -89,13 +87,15 @@ LIMIT 10;
 
 --8. Teams with the highest yearly pay to their players in most recent data (2015) and highest earner.
 
-SELECT team_id, ROUND(AVG(salary)) as avg_salary, MAX (salary), p.name_first, p.name_last
+SELECT team_id, ROUND(AVG(salary)) as avg_salary, MAX (salary), p.full_name
 FROM salary s
          JOIN player p
               ON s.player_id = p.player_id
 WHERE year = 2015
-GROUP BY 1, 4, 5
+GROUP BY 1, 4
 ORDER BY 2 DESC
+
+
 
 --ARREGLAR ESTE, explicación abajo de lo que se quiere hacer
 -- Quiero primero separar por team, después decir que paga cada team en average a sus jugadores, tercero sería el salario máximo
@@ -104,18 +104,18 @@ ORDER BY 2 DESC
 -- salario que paga cada team. El tema es que este query no quiere calcular el avg salary bien, regresa el mismo resultado que la columna de max salary
 
 
-SELECT  MAX(salary), name_first, name_last
+SELECT  MAX(salary), p.full_name
 FROM salary s
 JOIN player p
 ON s.player_id = p.player_id
 WHERE year = 2015
-GROUP BY  2, 3
+GROUP BY 2
 ORDER BY 1 DESC
 
 
 
 --9. Top 10 players by hits and part of the Hall of Fame
-SELECT b.player_id, CONCAT(p.name_first, ' ', p.name_last) as full_name, SUM(h)
+SELECT b.player_id, p.full_name, SUM(h)
 FROM batting_2 b
 JOIN player p
 ON b.player_id = p.player_id
@@ -123,7 +123,6 @@ JOIN hall_of_fame h
 ON h.player_id = p.player_id
 WHERE year>1950 and inducted = 'Y'
 GROUP BY 1,2
-HAVING SUM(h) IS NOT NULL
 ORDER BY 3 DESC
 LIMIT 25;
 
@@ -154,7 +153,7 @@ ORDER BY 2 DESC
 
 
 --12. Pitchers that earn more than the average salary in the mlb for the year 2015
-SELECT p.name_first, p.name_last, s.salary
+SELECT p.full_name, s.salary
 FROM player p
 JOIN salary s ON p.player_id = s.player_id
 JOIN fielding f ON p.player_id = f.player_id
@@ -163,7 +162,7 @@ WHERE s.salary > (
     FROM salary
     WHERE year = 2015
 ) AND s.year = 2015 AND pos = 'P'
-GROUP BY 1,2,3
+GROUP BY 1,2
 ORDER BY s.salary DESC;
 
 

@@ -52,3 +52,9 @@ AND hr > 0
   AND ab IS NOT NULL
   AND ab > 0;
 
+--7. ALTER TABLE player
+ADD COLUMN full_name VARCHAR(255);
+
+UPDATE player
+SET full_name = CONCAT(name_first, ' ', name_last);
+
