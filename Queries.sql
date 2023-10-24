@@ -149,8 +149,11 @@ FROM team
 GROUP BY 1
 ORDER BY 1 DESC;
 
--- a trend in which each decade we have more strikeouts per game indicating a possible improvement 
--- in pitchers technique and ability.Pitchers nowadays are also throwing harder with more ball movement.
+/*
+We can observe a trend showing each decade we have more strikeouts per game. This indicates there´s a possible
+improvement in pitchers technique and ability. Pitchers nowadays are also throwing harder with more ball movement
+which makes it harder for batters make contact with the baseball.
+ */
 
 --14.Average homeruns per game by decade
 
@@ -160,11 +163,11 @@ GROUP BY 1
 ORDER BY 1 DESC;
 
 /*
-We can also see a trend here in which each decade there are more homeruns per game except por the 2010 ´ s, but still the upward 
-trend is pretty clear.As pitchers have become more focused on strikeouts, they may be more likely to throw pitches with higher velocity 
-and spin rate, which can lead to more home run opportunities for batters. Also some stadiums have been modified to be
-"homerun friendly".Changes in bat design and materials have led to bats that can generate more power when the ball is struck.
-these may be some of the reasons we find these two interesting trends
+We can also see a trend here in which each decade there are more homeruns per game except por the 2010´s, but still the upward
+trend is pretty clear. As pitchers have become more focused on strikeouts, they may be more likely to throw pitches with higher velocity
+and spin rate, which can lead to more home run opportunities for batters when they finally reach contact with the baseball.
+Also some stadiums have been modified to be "homerun friendly". Changes in bat design and materials have led to bats that can generate more power when the ball is struck.
+These may be some of the reasons we find these two interesting trends.
 */
 
 --15.Most wins in a season without winning the World Series.
@@ -177,7 +180,7 @@ GROUP BY 1,2,3,4,5
 ORDER BY 3 DESC
 LIMIT 5;
 
---16.Minimum wins in a season and winning the World Series since 21st century.
+--16. Minimum wins in a season and winning the World Series since 21st century.
 
 SELECT name, g, w, ROUND((w:: numeric / g),3) , year
 FROM team
@@ -186,16 +189,16 @@ AND year >= 2000
 GROUP BY 1,2,3,5
 ORDER BY 4;
 
---17 VER COMO EVOLUCIONA LOS SALARIOS PROMEDIOS POR DECADA ? ? INCLUIR VARIACION PORCENTUAL ? ?
+--17 Average salaries per decade evolution for MLB players
+--Note: This query takes values for year variable from the 1985´s and not from the beginning of the 80`s decade
 
 SELECT ((year / 10) * 10) decade, ROUND(AVG(salary)) avg_salary_per_decade
 FROM salary
 GROUP BY 1
 ORDER BY 1 DESC;
 
--- especificar que los datos empiezan a mitad de la decada de los 80 (85)
 
---18.Average salaries by team and which of them have the best and worst compensation in comparison to the league `s average salary using percentiles
+--18.Average salaries by team and which of them have the best and worst compensation to their players in comparison to the league `s average salary using percentiles
 
 CREATE TEMP TABLE avg_salary_percentiles AS
 SELECT percentile_cont(0.1) WITHIN
@@ -214,7 +217,6 @@ FROM (SELECT avg(salary) avg_salary
      FROM salary
      WHERE year = 2015
      GROUP BY team_id) avg_salaries;
-
 
 SELECT team_id, ROUND(AVG(salary)) avg_salary,
     CASE
