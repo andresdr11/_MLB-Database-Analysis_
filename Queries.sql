@@ -1,4 +1,5 @@
---1.Mejores bateadores de la historia por Homeruns
+--1. The best hitters in history by home runs
+
 SELECT player_id, SUM(hr)
 FROM batting
 GROUP BY 1
@@ -6,7 +7,7 @@ HAVING SUM(hr) is not null
 ORDER BY 2 DESC
 LIMIT 25;
 
---2. Join de batting con player para tener los nombres completos de los jugadores.- - Most HomeRuns by Boston Red Sox players ever
+--2.  Most homeruns by Boston Red Sox players ever
 
 SELECT b.player_id, CONCAT (p.name_first, ' ', p.name_last) full_name, SUM(hr)
 FROM batting_2 b
@@ -17,7 +18,7 @@ GROUP BY 1,2
 ORDER BY 3 DESC
 LIMIT 10;
 
---3.Players ranked by hr, in case of players having the same number of home runs the rank will take number of hits into consideration.
+--3. Ranking players by homeruns, in case of players having the same number of home runs the rank will take number of hits into consideration.
 
 SELECT RANK() OVER (ORDER BY hr DESC, h / ab DESC ) Rank, full_name, hr, ROUND((h / ab), 3) batting_avg
 FROM batting_2
@@ -26,7 +27,7 @@ ON batting_2.player_id = p.player_id
 WHERE year = 2015
 LIMIT 25;
 
---4.Best homeruns per at bat avg from the New York Yankees players since 2000 ´ s
+--4.Best homeruns per at bat averages from the New York Yankees players since 2000´s
 
 SELECT b.player_id, full_name, SUM(hr) homeruns, SUM(ab) at_bats, ROUND(SUM(hr) / SUM(ab), 3) Homeruns_per_at_bat_AVG
 FROM batting_2 b
@@ -59,16 +60,16 @@ GROUP BY 1,2, league_avg
 ORDER BY 3 DESC
 LIMIT 25;
 
---6.Team with the highest avg attendance in 21st century
+--6.Teams with the highest avg attendance per game in 21st century
 
 SELECT name, ROUND(SUM(attendance) / sum(g)) avg_attendance_per_game
 FROM team
 WHERE year >= 2000
 GROUP BY 1
 ORDER BY 2 DESC;
--- In avg the NYY receive 22k fans in avg per game 
+-- In avg the NYY have the "best fans" or the highest attendance average receiving 22k fans per game
 
---7.Best Pitchers of all - time in terms of more "Pitching Triple Crown" player awards
+--7. Top Pitchers of all time based on the highest number of Pitching Triple Crown player award
 
 SELECT p.player_id, full_name, COUNT(award_id) total
 FROM player p
@@ -78,18 +79,16 @@ GROUP BY 1,2
 ORDER BY 3 DESC
 LIMIT 10;
 
---8.Teams with the highest salary disparity - - Este lo cambi é y me lanc é esta idea de disparity que est á bien tmbn algo con restas, pero bueno est á esto mientras tanto 
---CAMBIAR A PORCENTAJE
-
-SELECT team_id, ROUND(AVG(salary)) avg_salary, MAX(salary) max_salary, MAX(salary) - ROUND(AVG(salary)) salary_disparity
+--8.Teams with the highest salary disparity
+SELECT team_id, ROUND(AVG(salary)) avg_salary, MAX(salary) max_salary, ROUND((MAX(salary) - AVG(salary)) / AVG(salary) * 100, 2) ||'%' salary_disparity
 FROM salary s
 JOIN player p
 ON s.player_id = p.player_id
 WHERE year = 2015
 GROUP BY 1
-ORDER BY 3 DESC;
+ORDER BY 4 DESC;
 
---9.Top 10 players by hits and part of the Hall of Fame
+--9. Top 10 players with the highest number of hits who are also members of the Hall of Fame
 SELECT b.player_id, full_name, SUM(h)
 FROM batting_2 b
 JOIN player p 
@@ -102,9 +101,8 @@ GROUP BY 1,2
 ORDER BY 3 DESC
 LIMIT 25;
 
--- Fielding position and salary analysis 
-
---10.Best paid players and their fielding position
+-- Fielding position and salary analysis
+--10. Best paid players and their fielding position
 
 SELECT f.player_id, full_name, MAX(salary) max_salary, pos as position
 FROM salary s
@@ -116,7 +114,7 @@ GROUP BY 1,2,4
 ORDER BY 3 DESC
 LIMIT 50;
 
---11.Average salary per fielding position A PARTIR DE 2000
+--11.Average salary per fielding position since 2000`s
 
 SELECT pos as position, ROUND(AVG(salary)) avg_salary
 FROM salary s
