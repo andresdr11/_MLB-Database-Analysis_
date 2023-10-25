@@ -3,7 +3,7 @@
 SELECT player_id, SUM(hr)
 FROM batting
 GROUP BY 1
-HAVING SUM(hr) is not null
+HAVING SUM(hr) IS NOT NULL
 ORDER BY 2 DESC
 LIMIT 25;
 
