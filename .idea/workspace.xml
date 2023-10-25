@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Queries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Queries.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,26 +25,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vicen&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "last_opened_file_path": "C:/Users/andre/Downloads/Data MLB Github prueba/DATA",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;8beb95df-d90b-48dd-9d93-e68633eba0f8&quot;,
-      &quot;6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/database/\&quot;Proyecto\&quot;&quot;
+    "RunConfigurationTargetLRU": [
+      "8beb95df-d90b-48dd-9d93-e68633eba0f8",
+      "6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/database/\"Proyecto\""
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Queries.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/Queries.sql" />
