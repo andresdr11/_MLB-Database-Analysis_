@@ -191,8 +191,7 @@ ORDER BY 4;
 --17 Average salaries per decade evolution for MLB players
 --Note: This query takes values for year variable from the 1985´s and not from the beginning of the 80`s decade
 
-SELECT ((year / 10) * 10)
- decade, ROUND(AVG(salary)) avg_salary_per_decade
+SELECT ((year / 10) * 10) decade, ROUND(AVG(salary)) avg_salary_per_decade
 FROM salary
 GROUP BY 1
 ORDER BY 1 DESC;
