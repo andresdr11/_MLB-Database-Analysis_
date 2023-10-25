@@ -82,8 +82,6 @@ LIMIT 10;
 --8.Teams with the highest salary disparity
 SELECT team_id, ROUND(AVG(salary)) avg_salary, MAX(salary) max_salary, ROUND((MAX(salary) - AVG(salary)) / AVG(salary) * 100, 2) ||'%' salary_disparity
 FROM salary s
-JOIN player p
-ON s.player_id = p.player_id
 WHERE year = 2015
 GROUP BY 1
 ORDER BY 4 DESC;
@@ -230,3 +228,4 @@ FROM salary
 WHERE year = 2015
 GROUP BY team_id
 ORDER BY avg_salary DESC;
+
