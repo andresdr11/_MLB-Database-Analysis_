@@ -73,7 +73,8 @@ ORDER BY 2 DESC;
 
 SELECT p.player_id, full_name, COUNT(award_id) total
 FROM player p
-JOIN player_award pa ON p.player_id = pa.player_id
+JOIN player_award pa 
+ON p.player_id = pa.player_id
 WHERE award_id = 'Pitching Triple Crown'
 GROUP BY 1,2
 ORDER BY 3 DESC
@@ -192,7 +193,8 @@ ORDER BY 4;
 --17 Average salaries per decade evolution for MLB players
 --Note: This query takes values for year variable from the 1985´s and not from the beginning of the 80`s decade
 
-SELECT ((year / 10) * 10) decade, ROUND(AVG(salary)) avg_salary_per_decade
+SELECT ((year / 10) * 10)
+ decade, ROUND(AVG(salary)) avg_salary_per_decade
 FROM salary
 GROUP BY 1
 ORDER BY 1 DESC;
@@ -230,3 +232,22 @@ FROM salary
 WHERE year = 2015
 GROUP BY team_id
 ORDER BY avg_salary DESC;
+
+--19. Comparison for the 
+rank the teams by the amount of salary spend, and then rank them by the position of the end of the year by wins
+compare pitchers performance (win and losses) when they allowed a homerun and when they didnt
+for position players, look first how many error they have on the season compare to what was the season average of error on a player on that position (maybe you can do instead of the 9 positions, do outfiels, middle infiels (ss,2b), third base,first base, catcher, pitcher) and you can look either how many season they ended playing the players that were always under the average amount of errors, or look the hall of famers and compare the season they were under and over the average
+
+WITH ranked_data as 
+(
+SELECT name, SUM(salary), w wins, RANK() OVER(ORDER BY SUM(salary) DESC) salary_rank, RANK() OVER(ORDER BY w DESC) win_rank
+FROM salary s
+JOIN team t
+ON s.team_id = t.team_id
+WHERE t.year = 2015
+GROUP BY 1,3
+)
+
+SELECT name, salary_rank, win_rank
+FROM ranked_data
+ORDER BY 2;
