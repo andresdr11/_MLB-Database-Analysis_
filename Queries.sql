@@ -11,7 +11,7 @@ LIMIT 25;
 
 SELECT b.player_id, CONCAT (p.name_first, ' ', p.name_last) full_name, SUM(hr)
 FROM batting_2 b
-JOIN player p 
+JOIN player p
 ON b.player_id = p.player_id
 WHERE team_id = 'BOS'
 GROUP BY 1,2
@@ -52,7 +52,7 @@ SELECT b.player_id, full_name, ROUND(SUM(h) / SUM(ab), 3) batting_avg, SUM(ab) a
      ELSE 'Below avg'
     END AS batting_performance
 FROM league_avg, batting_2 b
-JOIN player p 
+JOIN player p
 ON b.player_id = p.player_id
 WHERE ab >= 200
 AND team_id = 'NYA'
@@ -73,7 +73,7 @@ ORDER BY 2 DESC;
 
 SELECT p.player_id, full_name, COUNT(award_id) total
 FROM player p
-JOIN player_award pa 
+JOIN player_award pa
 ON p.player_id = pa.player_id
 WHERE award_id = 'Pitching Triple Crown'
 GROUP BY 1,2
@@ -90,9 +90,9 @@ ORDER BY 4 DESC;
 --9. Top 10 players with the highest number of hits who are also members of the Hall of Fame
 SELECT b.player_id, full_name, SUM(h)
 FROM batting_2 b
-JOIN player p 
+JOIN player p
 ON b.player_id = p.player_id
-JOIN hall_of_fame h 
+JOIN hall_of_fame h
 ON h.player_id = p.player_id
 WHERE year > 1950
 AND inducted = 'Y'
@@ -105,9 +105,9 @@ LIMIT 25;
 
 SELECT f.player_id, full_name, MAX(salary) max_salary, pos as position
 FROM salary s
-JOIN fielding f 
+JOIN fielding f
 ON s.player_id = f.player_id
-JOIN player p 
+JOIN player p
 ON p.player_id = s.player_id
 GROUP BY 1,2,4
 ORDER BY 3 DESC
@@ -117,7 +117,7 @@ LIMIT 50;
 
 SELECT pos as position, ROUND(AVG(salary)) avg_salary
 FROM salary s
-JOIN fielding f 
+JOIN fielding f
 ON s.player_id = f.player_id
 WHERE f.year >= 2000
 GROUP BY 1
@@ -127,9 +127,9 @@ ORDER BY 2 DESC;
 
 SELECT full_name, salary
 FROM player p
-JOIN salary s 
+JOIN salary s
 ON p.player_id = s.player_id
-JOIN fielding f 
+JOIN fielding f
 ON p.player_id = f.player_id
 WHERE s.salary >
     (SELECT AVG(salary)
