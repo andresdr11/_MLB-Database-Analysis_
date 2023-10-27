@@ -1,4 +1,4 @@
-Welcome to the MLB Database Analysis project by Vicente and Andres. We're utilizing PostgreSQL and SQL to examine the Lahman's Baseball dataset, which contains extensive baseball statistics from 1871 to 2015. Our primary objective is to demonstrate our analytical skills using SQL and, in the subsequent phases, replicate the analysis in Python.
+Welcome to the MLB Database Analysis project by Vicente and Andres. We're utilizing PostgreSQL to examine the Lahman's Baseball dataset, which contains extensive baseball statistics from 1871 to 2015. Our primary objective is to demonstrate our analytical skills using SQL and, in the subsequent phases, replicate the analysis in Python.
 
 
 ## **Objective**
