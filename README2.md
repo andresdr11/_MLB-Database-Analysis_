@@ -12,6 +12,6 @@ Execute the script located in SQL-->Tables_and_variables.sql to perform initial 
 
 ### Railway App: Database Hosting
 We utilized the Railway app for hosting the database, which facilitated collaborative work on this project. Shoutout to the Railway app for their fantastic hosting service! 
-available at: https://railway.app/ 
+Available at: https://railway.app/ 
 
 
