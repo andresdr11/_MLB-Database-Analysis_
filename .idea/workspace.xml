@@ -7,7 +7,10 @@
     <list default="true" id="5aed81d9-74f7-4fb4-96ca-c38d77f3257a" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6646f87b-9abb-4763-b8f9-0c2b36f1d6a2/storage_v2/_src_/database/Proyecto.Jd0myQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_25_2023_6_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_25_2023_6_22_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_25_2023_6_23_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python/PruebasAndres.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Python/PruebasAndres.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
-    "last_opened_file_path": "C:/Users/andre/Downloads/Data MLB Github prueba/DATA",
+    "last_opened_file_path": "C:/Users/andre/Downloads/Data MLB Github prueba/SQL/Tables and variables.sql",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
