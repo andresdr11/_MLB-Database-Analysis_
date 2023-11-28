@@ -25,7 +25,7 @@ Key areas of our analysis encompass:
 Our project roadmap is as follows:
 
 - SQL: We have completed the SQL analysis.
-- Python Pandas: Our next step is to replicate the SQL results using Python's Pandas library.
+- Python Pandas: We have completed the replicate of the SQL analysis using Python's Pandas library.
 - Python Polars: After the Pandas phase, we will use Python Polars to replicate and assess the difference in efficiency between Pandas and Polars.
 - Data Visualization: We will create data visualizations, including Tableau dashboards, as well as explore Matplotlib and Seaborn for Python-based graphs.
 - Machine Learning: In this final phase, we will apply machine learning techniques to predict trends in baseball statistics and assess model accuracy using data beyond 2015.
